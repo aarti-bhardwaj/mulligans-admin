@@ -45,3 +45,10 @@ Stack Trace:
 #2 {main}
 
 
+2018-06-19 08:12:44 Error: [RuntimeException] Unknown command `cake migration`. Run `cake --help` to get the list of valid commands. in /home/twinspark/public_html/dev/mulligans-admin/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 321
+Stack Trace:
+#0 /home/twinspark/public_html/dev/mulligans-admin/vendor/cakephp/cakephp/src/Console/CommandRunner.php(159): Cake\Console\CommandRunner->resolveName(Object(Cake\Console\CommandCollection), Object(Cake\Console\ConsoleIo), 'migration')
+#1 /home/twinspark/public_html/dev/mulligans-admin/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#2 {main}
+
+
