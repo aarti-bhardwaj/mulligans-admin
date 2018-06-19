@@ -1,0 +1,47 @@
+2018-06-18 07:19:41 Warning: Warning (2): mkdir(): Permission denied in [/var/www/html/mulligans-admin/vendor/cakephp/cakephp/src/Filesystem/Folder.php, line 638]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+mkdir - [internal], line ??
+Cake\Filesystem\Folder::create() - CORE/src/Filesystem/Folder.php, line 638
+Cake\Filesystem\Folder::__construct() - CORE/src/Filesystem/Folder.php, line 146
+Cake\Filesystem\File::__construct() - CORE/src/Filesystem/File.php, line 87
+Cake\Console\Shell::createFile() - CORE/src/Console/Shell.php, line 931
+Bake\Shell\Task\SimpleBakeTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/SimpleBakeTask.php, line 108
+Migrations\Shell\Task\SimpleMigrationTask::bake() - ROOT/vendor/cakephp/migrations/src/Shell/Task/SimpleMigrationTask.php, line 95
+Migrations\Shell\Task\MigrationTask::bake() - ROOT/vendor/cakephp/migrations/src/Shell/Task/MigrationTask.php, line 40
+Bake\Shell\Task\SimpleBakeTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/SimpleBakeTask.php, line 91
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 532
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 525
+Cake\Console\CommandRunner::runShell() - CORE/src/Console/CommandRunner.php, line 342
+Cake\Console\CommandRunner::run() - CORE/src/Console/CommandRunner.php, line 164
+[main] - ROOT/bin/cake.php, line 12
+
+
+
+2018-06-18 07:20:37 Warning: Warning (2): mkdir(): Permission denied in [/var/www/html/mulligans-admin/vendor/cakephp/cakephp/src/Filesystem/Folder.php, line 638]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 159
+mkdir - [internal], line ??
+Cake\Filesystem\Folder::create() - CORE/src/Filesystem/Folder.php, line 638
+Cake\Filesystem\Folder::__construct() - CORE/src/Filesystem/Folder.php, line 146
+Cake\Filesystem\File::__construct() - CORE/src/Filesystem/File.php, line 87
+Cake\Console\Shell::createFile() - CORE/src/Console/Shell.php, line 931
+Bake\Shell\Task\SimpleBakeTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/SimpleBakeTask.php, line 108
+Migrations\Shell\Task\SimpleMigrationTask::bake() - ROOT/vendor/cakephp/migrations/src/Shell/Task/SimpleMigrationTask.php, line 95
+Migrations\Shell\Task\MigrationTask::bake() - ROOT/vendor/cakephp/migrations/src/Shell/Task/MigrationTask.php, line 40
+Bake\Shell\Task\SimpleBakeTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/SimpleBakeTask.php, line 91
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 532
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 525
+Cake\Console\CommandRunner::runShell() - CORE/src/Console/CommandRunner.php, line 342
+Cake\Console\CommandRunner::run() - CORE/src/Console/CommandRunner.php, line 164
+[main] - ROOT/bin/cake.php, line 12
+
+
+
+2018-06-18 07:43:03 Error: [RuntimeException] Unknown command `cake migration`. Run `cake --help` to get the list of valid commands. in /var/www/html/mulligans-admin/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 321
+Stack Trace:
+#0 /var/www/html/mulligans-admin/vendor/cakephp/cakephp/src/Console/CommandRunner.php(159): Cake\Console\CommandRunner->resolveName(Object(Cake\Console\CommandCollection), Object(Cake\Console\ConsoleIo), 'migration')
+#1 /var/www/html/mulligans-admin/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#2 {main}
+
+
