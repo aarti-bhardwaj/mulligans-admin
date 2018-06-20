@@ -24,7 +24,8 @@ class PostsController extends ApiController
    */
   public function add()
   {
-    pr($_POST); die;
+    pr('In API');
+    pr($_POST); 
     $data = $this->request->data();
     pr($data); die;
     if(!$data) {
