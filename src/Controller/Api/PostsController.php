@@ -25,8 +25,6 @@ class PostsController extends ApiController
   public function add()
   {
     pr('In API');
-    // pr($_POST); 
-    Log::write('debug', $_FILES);
     $data = $this->request->data();
     Log::write('debug', 'In add function');
     Log::write('debug', $data);
