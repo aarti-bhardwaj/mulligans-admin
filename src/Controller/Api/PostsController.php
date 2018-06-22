@@ -25,10 +25,11 @@ class PostsController extends ApiController
   public function add()
   {
     pr('In API');
-    pr($_POST); 
+    // pr($_POST); 
+    Log::write('debug', $_FILES);
     $data = $this->request->data();
     Log::write('debug', 'In add function');
-    Log::write('debug', 'fetched data'.$data);
+    Log::write('debug', $data);
     pr($data); die;
     if(!$data) {
       throw new BadRequestException("Request data not found.");
