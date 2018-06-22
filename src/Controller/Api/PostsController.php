@@ -24,11 +24,15 @@ class PostsController extends ApiController
    */
   public function add()
   {
-    pr('In API');
     $data = $this->request->data();
-    Log::write('debug', 'In add function');
-    Log::write('debug', $data);
-    pr($data); die;
+    // pr('In API');
+    // Log::write('debug', 'In add function');
+    // Log::write('debug', $data);
+
+    // if($data['ionicfile']) {
+    //   $getFileArray = $this->addFiles($data);
+    // }
+    // pr($data); die;
     if(!$data) {
       throw new BadRequestException("Request data not found.");
     }
@@ -38,16 +42,16 @@ class PostsController extends ApiController
     if(!isset($data['asking_price']) && (isset($data['asking_price']) && !$data['asking_price'])){
       throw new BadRequestException(__('Kindly provide valid price of the product'));
     }
-    if(!isset($data['image_name']) && (isset($data['image_name']) && !$data['image_name'])){
-      throw new BadRequestException(__('Kindly provide valid image'));
-    }
-    $data['post_images'][] = ['image_name' => $data['image_name'], $data['image_path']];
+    // if(!isset($data['image_name']) && (isset($data['image_name']) && !$data['image_name'])){
+    //   throw new BadRequestException(__('Kindly provide valid image'));
+    // }
+    // $data['post_images'][] = ['image_name' => $data['image_name'], $data['image_path']];
 
 
     $post = $this->Posts->newEntity();
       if ($this->request->is('post')) {
-          $post = $this->Posts->patchEntity($post, $data,['associated'=>['PostImages']]);
-          if ($this->Posts->save($post,['associated'=>['PostImages']])) {
+          $post = $this->Posts->patchEntity($post, $data);
+          if ($this->Posts->save($post)) {
             $data =array();
             $data['status']=true;
             $data['data'] = $post;

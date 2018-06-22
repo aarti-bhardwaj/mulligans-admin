@@ -215,3 +215,7 @@ Type::build('timestamp')
 if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
 }
+
+if(!Configure::read('ImageUpload.uploadImage')) {
+   Configure::write('ImageUpload.uploadImage','uploads');
+}
