@@ -33,4 +33,16 @@ class PostImage extends Entity
         'is_approved' => true,
         'post' => true
     ];
+
+    protected $_virtual = ['image_url'];
+    
+    protected function _getImageUrl()
+    {
+        if(isset($this->_properties['image_name']) && !empty($this->_properties['image_name'])) {
+            $url = Router::url('/uploads/'.$this->_properties['image_name'],true);
+        }else{
+            $url = Router::url('/img/default-img.jpeg',true);
+        }
+        return $url;
+    }
 }

@@ -11,41 +11,16 @@
 /logs/*
 !/logs/empty
 config/Migrations/schema-dump-default.lock
-webroot/profiles/*
-!webroot/profiles/empty
-
-webroot/school_logos/*
-!webroot/school_logos/empty
-webroot/learningBoard/src/app/app-settings.ts
-
-webroot/unit_resources/*
-!webroot/unit_resources/empty
 
 webroot/uploads/*
 !webroot/uploads/empty
 
-webroot/evidence/*
-!webroot/evidence/empty
 
-webroot/pdfs/*
-!webroot/pdfs/empty
-
-pdfs/*
-!pdfs/empty
-
-
-webroot/files/*
-!webroot/files/empty
 
 /composer.lock
-csv/*
-!csv/empty
 /config/bootstrap.php
 webroot/vendor_documents/*
 !webroot/vendor_documents/empty
-isc/
-webroot/learningBoard/dist/*
-webroot/learningBoard/package-lock.json
 
 # ng ui #
 
