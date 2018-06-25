@@ -4,7 +4,9 @@ use App\Controller\Api\ApiController;
 use Cake\Network\Exception\UnauthorizedException;
 use Cake\Network\Exception\BadRequestException;
 use Cake\Log\Log;
-/* Players Controller
+use Cake\Core\Configure;
+
+/* Controller
 *
 * @property \App\Model\Table\PostTable $Posts
 */
@@ -23,10 +25,8 @@ class PostImagesController extends ApiController
    */
   public function add()
   {
-    pr('In add');
-
-     pr($_FILES); die;
-  
+      $req = $this->request->data();
+    
      $target_path = WWW_ROOT . Configure::read('ImageUpload.uploadImage');
       $file = $_FILES['file']['name'];
       //sanitize filename
@@ -39,13 +39,14 @@ class PostImagesController extends ApiController
             
             $data = [
                       'file_path' => 'webroot'.DS.Configure::read('ImageUpload.uploadImage').DS,
-                      'file_name' => $file
+                      'file_name' => $file,
+                      'post_id'   => $req['post_id']
                     ];
                   
         } 
       }
 
-    
+ pr($data); die;   
     $postImage = $this->PostImages->newEntity();
       if ($this->request->is('post')) {
           $postImage = $this->PostImages->patchEntity($postImage, $data);
@@ -58,7 +59,7 @@ class PostImagesController extends ApiController
             $this->set('_serialize', ['status','data']);
           }
       }
-  }
+  
 
       if(!$this->request->is(['post'])){
         throw new MethodNotAllowedException(__('BAD_REQUEST'));
