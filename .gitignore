@@ -1,0 +1,76 @@
+# CakePHP specific files #
+##########################
+/config/app.php
+/config/.env
+/vendor/*
+!/vendor/empty
+/config/bootstrap.php
+/config/aws_default.ini
+/tmp/*
+!/tmp/empty
+/logs/*
+!/logs/empty
+config/Migrations/schema-dump-default.lock
+webroot/profiles/*
+!webroot/profiles/empty
+
+webroot/school_logos/*
+!webroot/school_logos/empty
+webroot/learningBoard/src/app/app-settings.ts
+
+webroot/unit_resources/*
+!webroot/unit_resources/empty
+
+webroot/uploads/*
+!webroot/uploads/empty
+
+webroot/evidence/*
+!webroot/evidence/empty
+
+webroot/pdfs/*
+!webroot/pdfs/empty
+
+pdfs/*
+!pdfs/empty
+
+
+webroot/files/*
+!webroot/files/empty
+
+/composer.lock
+csv/*
+!csv/empty
+/config/bootstrap.php
+webroot/vendor_documents/*
+!webroot/vendor_documents/empty
+isc/
+webroot/learningBoard/dist/*
+webroot/learningBoard/package-lock.json
+
+# ng ui #
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# Tool specific files #
+#######################
+*~ # vim
+*.swp # vim
+*.swo # vim
+*.sublime-* # sublime text
+*.tmlanguage.cache # sublime text & textmate
+*.tmPreferences.cache # sublime text & textmate
+*.stTheme.cache # cache files for sublime text
+.settings/* # Eclipse
+.idea/* # JetBrains, aka PHPStorm, IntelliJ IDEA
+nbproject/* # NetBeans
+.vscode # Visual Studio Code
+.sass-cache/ # Sass preprocessor
