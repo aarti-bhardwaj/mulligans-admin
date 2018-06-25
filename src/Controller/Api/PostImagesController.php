@@ -28,25 +28,23 @@ class PostImagesController extends ApiController
       $req = $this->request->data();
     
      $target_path = WWW_ROOT . Configure::read('ImageUpload.uploadImage');
-      $file = $_FILES['file']['name'];
+      $file = $_FILES['ionicfile']['name'];
       //sanitize filename
       $file = mb_ereg_replace("([^\w\s\d\-_~,;\[\]\(\).])", '', $file);
       $file = time().$file;
       $success = false;
       $data = [];
       if ($file != '') {
-        if (move_uploaded_file($_FILES['file']['tmp_name'], $target_path.DS.$file)) {
+        if (move_uploaded_file($_FILES['ionicfile']['tmp_name'], $target_path.DS.$file)) {
             
             $data = [
-                      'file_path' => 'webroot'.DS.Configure::read('ImageUpload.uploadImage').DS,
-                      'file_name' => $file,
+                      'image_path' => 'webroot'.DS.Configure::read('ImageUpload.uploadImage').DS,
+                      'image_name' => $file,
                       'post_id'   => $req['post_id']
                     ];
                   
         } 
-      }
-
- pr($data); die;   
+      }   
     $postImage = $this->PostImages->newEntity();
       if ($this->request->is('post')) {
           $postImage = $this->PostImages->patchEntity($postImage, $data);
