@@ -87,15 +87,18 @@ class PostsController extends AppController
             $data = $this->request->data();
             // $bar_id = $this->getParams('pass.0');
             // pr($data); die;
-            $post = $this->Posts->patchEntity($post, $this->request->getData());
-            if ($this->Posts->save($post)) {
-                $this->Flash->success(__('The post has been saved.'));
+            $this->loadModel('PostImages');
+            $postImage = $this->PostImages->findById($data['post_id'])->first();
+            $postImage = $this->PostImages->patchEntity($postImage, $this->request->getData());
+            pr($postImage); die;
+            if ($this->PostImages->save($postImage)) {
+                $this->Flash->success(__('The post image has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The post could not be saved. Please, try again.'));
+            $this->Flash->error(__('The post image could not be saved. Please, try again.'));
         }
-        $this->set(compact('post'));
+        $this->set(compact('postImage'));
     }
 
     /**
