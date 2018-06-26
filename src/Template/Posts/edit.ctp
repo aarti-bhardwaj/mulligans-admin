@@ -22,7 +22,7 @@
             <?php foreach ($post->post_images as $image): ?>
             <tr>
                  <td><img style = "width: 40px; height: auto" src="<?= $image->image_url ?>"></td>
-                <td>Approve: <?= $this->Form->checkbox('is_approved', ['label' => false, 'checked'=> $image->is_approved ? "checked" : "", 'id' =>  $image->id 'name' => 'checked' ]); ?></td>
+                <td>Approve: <?= $this->Form->checkbox('is_approved', ['label' => false, 'checked'=> $image->is_approved ? "checked" : "", 'id' =>  $image->id ,'name' => 'checked' ]); ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>
