@@ -34,32 +34,23 @@
 </div>
 
 
-<script >
-      $('input[name=checked]').on('click', fav);
 
-            function fav(e) {
-              console.log('In ajax');
-              var objId = $(this).attr('id');
-              console.log(objId);
-              var is_approved = $("input:checkbox").is(":checked") ? 1:0;
-              var request = {
-                'is_approved': is_approved
-              }
+    <script>
+        $('input[name=is_approved]').change(function(e) {
+        e.preventDefault();
+        console.log('In hitting api');
 
-             $.ajax({
-                    url: host+"posts/edit"+objId,
-                    headers:{"accept":"application/json"},
-                    dataType: 'json',
-                    data: request,
-                    type: "put",
-                    success:function(data){
-                        console.log('ajax success');
-                        
-                        console.log(response);
-                    error:function(){
-                        console.log('ajax error');
-                    }
-                });
-            }
-            
-    </script>
+        // Determine ID
+         var objId = $(this).attr('id');
+         console.log(objId);
+        
+
+        var isChecked = $("input:checkbox").is(":checked") ? 1:0; 
+        console.log('is checked' + isChecked);
+        $.ajax({
+                  type: 'PUT',
+                  url: host+"posts/edit"+objId,
+                  data: { is_approved:isChecked }
+        });        
+        });
+        </script>
