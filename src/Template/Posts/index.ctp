@@ -34,7 +34,7 @@
             <?php foreach ($posts as $post): ?>
             <tr>
                 <td><?= $this->Number->format($post->id) ?></td>
-                <td></td>
+                <td><?= h($post->post_image->image_url) ?></td>
                 <td><?= $this->Number->format($post->asking_price) ?></td>
                 <td><?= h($post->product_description) ?></td>
                 <td><?= h($post->first_name) ?></td>
