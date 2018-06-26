@@ -8,6 +8,10 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
+
+<nav class="large-2 medium-4 columns" id="actions-sidebar">
+   
+</nav> 
 <div class="posts form large-9 medium-8 columns content">
     <?= $this->Form->create($post) ?>
     <fieldset>
@@ -32,8 +36,6 @@
     </table>  
      
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
 </div>
 
 
