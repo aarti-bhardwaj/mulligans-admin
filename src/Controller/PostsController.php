@@ -83,6 +83,23 @@ class PostsController extends AppController
         $post = $this->Posts->get($id, [
             'contain' => ['PostImages']
         ]);
+
+        if(isset($post->post_images) && !empty($post->post_images)) {
+
+        $files = array();
+        foreach ($post->post_images as $key => $image) {
+            array_push($files, $image->image_url);
+                }
+        $zipname = 'file.zip';
+        $zip = new ZipArchive;
+        $zip->open($zipname, ZipArchive::CREATE);
+        foreach ($files as $file) {
+          $zip->addFile($file);
+        }
+        $zip->close();
+        }
+
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->data();
             // $bar_id = $this->getParams('pass.0');
@@ -97,7 +114,7 @@ class PostsController extends AppController
             }
             $this->Flash->error(__('The post image could not be saved. Please, try again.'));
         }
-        $this->set(compact('post'));
+        $this->set(compact('post', $zip));
     }
 
     /**
