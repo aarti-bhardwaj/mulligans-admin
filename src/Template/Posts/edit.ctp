@@ -18,9 +18,11 @@
             echo $this->Form->control('phone');
         ?> -->
         <?php foreach ($post->post_images as $image): ?>
-            <img src="<?= $image->image_url ?>">
-            <input type="checkbox" name="">   
-        <?php endforeach; ?>
+            <tr>
+                <td><img src="<?= $image->image_url ?>"></td>
+                <td>Aproove: <?= $this->Form->checkbox('is_approved', ['label' => false, 'checked'=> $image->is_approved ? "checked" : "", 'id' => 'is_approved']); ?>></td>
+            </tr>
+            <?php endforeach; ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
