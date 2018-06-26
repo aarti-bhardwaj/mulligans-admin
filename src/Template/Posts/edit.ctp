@@ -25,7 +25,7 @@
             <?php foreach ($post->post_images as $image): ?>
             <tr>
                  <td><img style = "width: 40px; height: auto" src="<?= $image->image_url ?>"></td>
-                <td>Approve: <?= $this->Form->checkbox('is_approved', ['label' => false, 'checked'=> $image->is_approved ? "checked" : "", 'data-imageId' =>  $image->id , 'data-id' => $post->id, 'name' => 'checked' ]); ?></td>
+                <td>Approve: <?= $this->Form->checkbox('is_approved', ['label' => false, 'checked'=> $image->is_approved ? "checked" : "", 'data-image_id' =>  $image->id , 'data-id' => $post->id, 'name' => 'checked' ]); ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>
@@ -39,13 +39,13 @@
 
 
     <script>
-        $('input[name=is_approved]').change(function(e) {
+        $('input[name=checked]').change(function(e) {
         e.preventDefault();
         console.log('In hitting api');
 
         // Determine ID
         var host = "<?= $this->Url->build('/', true) ?>"
-         var objId = $(this).data('imageId');
+        var objId = $(this).data('image_id');
          var postId =  $(this).data('id');
          console.log(objId);
         
@@ -55,7 +55,7 @@
         $.ajax({
                   type: 'PUT',
                   url: host+"posts/edit/"+postId,
-                  data: { is_approved:isChecked, post_id:postId }
+                  data: { is_approved:isChecked, id:objId }
         });        
         });
         </script>
