@@ -84,6 +84,8 @@ class PostsController extends AppController
             'contain' => ['PostImages']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $data = $this->request->data();
+            pr($data); die;
             $post = $this->Posts->patchEntity($post, $this->request->getData());
             if ($this->Posts->save($post)) {
                 $this->Flash->success(__('The post has been saved.'));

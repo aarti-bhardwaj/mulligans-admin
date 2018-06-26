@@ -15,31 +15,51 @@
         <thead>
             <tr>
                 <th>Images</th>
-                <th>Aproove Image</th>
+                <th>Approve Image</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($post->post_images as $image): ?>
             <tr>
                  <td><img style = "width: 40px; height: auto" src="<?= $image->image_url ?>"></td>
-                <td>Aproove: <?= $this->Form->checkbox('is_approved', ['label' => false, 'checked'=> $image->is_approved ? "checked" : "", 'id' => 'is_approved']); ?></td>
+                <td>Approve: <?= $this->Form->checkbox('is_approved', ['label' => false, 'checked'=> $image->is_approved ? "checked" : "", 'id' =>  $image->id 'name' => 'checked' ]); ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>
     </table>  
      
-
-
-
-
-        <!-- <?php foreach ($post->post_images as $image): ?>
-            
-             <tr>
-                <td><img style = "width: 40px; height: auto" src="<?= $image->image_url ?>"></td>
-                <td>Aproove: <?= $this->Form->checkbox('is_approved', ['label' => false, 'checked'=> $image->is_approved ? "checked" : "", 'id' => 'is_approved']); ?></td>
-            </tr>
-            <?php endforeach; ?> -->
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
 </div>
+
+
+<script >
+      $('input[name=checked]').on('click', fav);
+
+            function fav(e) {
+              console.log('In ajax');
+              var objId = $(this).attr('id');
+              console.log(objId);
+              var is_approved = $("input:checkbox").is(":checked") ? 1:0;
+              var request = {
+                'is_approved': is_approved
+              }
+
+             $.ajax({
+                    url: host+"posts/edit"+objId,
+                    headers:{"accept":"application/json"},
+                    dataType: 'json',
+                    data: request,
+                    type: "put",
+                    success:function(data){
+                        console.log('ajax success');
+                        
+                        console.log(response);
+                    error:function(){
+                        console.log('ajax error');
+                    }
+                });
+            }
+            
+    </script>
