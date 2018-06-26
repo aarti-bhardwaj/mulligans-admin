@@ -9,20 +9,36 @@
     <?= $this->Form->create($post) ?>
     <fieldset>
         <legend><?= __('Post Images') ?></legend>
-        <!-- <?php
-            echo $this->Form->control('asking_price');
-            echo $this->Form->control('product_description');
-            echo $this->Form->control('first_name');
-            echo $this->Form->control('last_name');
-            echo $this->Form->control('email');
-            echo $this->Form->control('phone');
-        ?> -->
-        <?php foreach ($post->post_images as $image): ?>
+     
+
+     <table cellpadding="0" cellspacing="0">
+        <thead>
             <tr>
-                <td><img src="<?= $image->image_url ?>"></td>
-                <td>Aproove: <?= $this->Form->checkbox('is_approved', ['label' => false, 'checked'=> $image->is_approved ? "checked" : "", 'id' => 'is_approved']); ?>></td>
+                <th>Images</th>
+                <th>Aproove Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($post->post_images as $image): ?>
+            <tr>
+                 <td><img style = "width: 40px; height: auto" src="<?= $image->image_url ?>"></td>
+                <td>Aproove: <?= $this->Form->checkbox('is_approved', ['label' => false, 'checked'=> $image->is_approved ? "checked" : "", 'id' => 'is_approved']); ?></td>
             </tr>
             <?php endforeach; ?>
+        </tbody>
+    </table>  
+     
+
+
+
+
+        <!-- <?php foreach ($post->post_images as $image): ?>
+            
+             <tr>
+                <td><img style = "width: 40px; height: auto" src="<?= $image->image_url ?>"></td>
+                <td>Aproove: <?= $this->Form->checkbox('is_approved', ['label' => false, 'checked'=> $image->is_approved ? "checked" : "", 'id' => 'is_approved']); ?></td>
+            </tr>
+            <?php endforeach; ?> -->
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
