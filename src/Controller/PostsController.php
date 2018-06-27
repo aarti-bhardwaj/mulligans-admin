@@ -100,48 +100,6 @@ class PostsController extends AppController
         // $zip->close();
         // }
 
-
-
-        // $files = array(); /*Image array*/
-        // foreach ($post->post_images as $key => $image) {
-        //     array_push($files, $image->image_name);
-        // }
-
-
-        // # create new zip opbject
-        // $zip = new ZipArchive();
-
-        // # create a temp file & open it
-        // $tmp_file = tempnam('.','');
-        // $zip->open($tmp_file, ZipArchive::CREATE);
-
-        // # loop through each file
-        // foreach($files as $file){
-
-        //     # download file
-        //     $download_file = file_get_contents($file);
-
-        //     #add it to the zip
-        //     $zip->addFromString(basename($file),$download_file);
-
-        // }
-
-        // # close zip
-        // $zip->close();
-
-        // # send the file to the browser as a download
-        // header('Content-disposition: attachment; filename=download.zip');
-        // header('Content-type: application/zip');
-        // readfile($tmp_file);
-
-
-
-
-
-
-
-
-
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->data();
             // $bar_id = $this->getParams('pass.0');
@@ -177,6 +135,48 @@ class PostsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function downloadZip()
+    {
+        $post = $this->Posts->get($id, [
+            'contain' => ['PostImages']
+        ]);
+
+        if(isset($post->post_images) && !empty($post->post_images)) {
+            $files = array(); /*Image array*/
+        foreach ($post->post_images as $key => $image) {
+            array_push($files, $image->image_name);
+        }
+
+
+        # create new zip opbject
+        $zip = new ZipArchive();
+
+        # create a temp file & open it
+        $tmp_file = tempnam('.','');
+        $zip->open($tmp_file, ZipArchive::CREATE);
+
+        # loop through each file
+        foreach($files as $file){
+
+            # download file
+            $download_file = file_get_contents($file);
+
+            #add it to the zip
+            $zip->addFromString(basename($file),$download_file);
+
+        }
+
+        # close zip
+        $zip->close();
+
+        # send the file to the browser as a download
+        header('Content-disposition: attachment; filename=download.zip');
+        header('Content-type: application/zip');
+        readfile($tmp_file);
+        }
+
     }
 
     public function isAuthorized($user)
