@@ -13,12 +13,12 @@
    
 </nav> 
 <div class="posts form large-9 medium-8 columns content">
+    <ul class="right">
+      <?= $this->Html->link(__('Download Zip'), ['controller' => 'Posts', 'action' => 'downloadZip', $post->id]) ?>
+    </ul>
     <?= $this->Form->create($post) ?>
     <fieldset>
         <legend><?= __('Post Images') ?></legend>
-    <!-- <ul class="right">
-       <?= $this->html->link(__('Logout'), ['controller' => 'Posts', 'action' => 'downloadZip'],['class'=>'button btn-warning']); ?>
-    </ul> -->
 
      <table cellpadding="0" cellspacing="0">
         <thead>

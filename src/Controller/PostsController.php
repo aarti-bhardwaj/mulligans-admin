@@ -146,7 +146,7 @@ class PostsController extends AppController
         if(isset($post->post_images) && !empty($post->post_images)) {
             $files = array(); /*Image array*/
         foreach ($post->post_images as $key => $image) {
-            array_push($files, $image->image_name);
+            array_push($files, $image->image_path.$image->image_name);
         }
 
 
@@ -176,6 +176,7 @@ class PostsController extends AppController
         header('Content-type: application/zip');
         readfile($tmp_file);
         }
+        pr('completed'); die;
         $this->set(compact('post', $post));
         $this->set(compact('zip', $zip));
 
