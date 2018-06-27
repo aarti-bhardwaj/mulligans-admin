@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use ZipArchive;
 
 /**
  * Posts Controller
@@ -101,37 +102,37 @@ class PostsController extends AppController
 
 
 
-        $files = array(); /*Image array*/
-        foreach ($post->post_images as $key => $image) {
-            array_push($files, $image->image_name);
-        }
+        // $files = array(); /*Image array*/
+        // foreach ($post->post_images as $key => $image) {
+        //     array_push($files, $image->image_name);
+        // }
 
 
-        # create new zip opbject
-        $zip = new ZipArchive();
+        // # create new zip opbject
+        // $zip = new ZipArchive();
 
-        # create a temp file & open it
-        $tmp_file = tempnam('.','');
-        $zip->open($tmp_file, ZipArchive::CREATE);
+        // # create a temp file & open it
+        // $tmp_file = tempnam('.','');
+        // $zip->open($tmp_file, ZipArchive::CREATE);
 
-        # loop through each file
-        foreach($files as $file){
+        // # loop through each file
+        // foreach($files as $file){
 
-            # download file
-            $download_file = file_get_contents($file);
+        //     # download file
+        //     $download_file = file_get_contents($file);
 
-            #add it to the zip
-            $zip->addFromString(basename($file),$download_file);
+        //     #add it to the zip
+        //     $zip->addFromString(basename($file),$download_file);
 
-        }
+        // }
 
-        # close zip
-        $zip->close();
+        // # close zip
+        // $zip->close();
 
-        # send the file to the browser as a download
-        header('Content-disposition: attachment; filename=download.zip');
-        header('Content-type: application/zip');
-        readfile($tmp_file);
+        // # send the file to the browser as a download
+        // header('Content-disposition: attachment; filename=download.zip');
+        // header('Content-type: application/zip');
+        // readfile($tmp_file);
 
 
 
