@@ -16,9 +16,9 @@
     <?= $this->Form->create($post) ?>
     <fieldset>
         <legend><?= __('Post Images') ?></legend>
-    <ul class="right">
+    <!-- <ul class="right">
        <?= $this->html->link(__('Logout'), ['controller' => 'Posts', 'action' => 'downloadZip'],['class'=>'button btn-warning']); ?>
-    </ul>
+    </ul> -->
 
      <table cellpadding="0" cellspacing="0">
         <thead>

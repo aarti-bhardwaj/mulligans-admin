@@ -114,7 +114,7 @@ class PostsController extends AppController
             }
             $this->Flash->error(__('The post image could not be saved. Please, try again.'));
         }
-        $this->set(compact('post', $zip));
+        $this->set(compact('post', $post));
     }
 
     /**
@@ -176,6 +176,8 @@ class PostsController extends AppController
         header('Content-type: application/zip');
         readfile($tmp_file);
         }
+        $this->set(compact('post', $post));
+        $this->set(compact('zip', $zip));
 
     }
 
