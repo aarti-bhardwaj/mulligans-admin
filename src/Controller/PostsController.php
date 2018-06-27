@@ -137,7 +137,7 @@ class PostsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function downloadZip()
+    public function downloadZip($id= null)
     {
         $post = $this->Posts->get($id, [
             'contain' => ['PostImages']
@@ -146,7 +146,8 @@ class PostsController extends AppController
         if(isset($post->post_images) && !empty($post->post_images)) {
             $files = array(); /*Image array*/
         foreach ($post->post_images as $key => $image) {
-            array_push($files, $image->image_path.$image->image_name);
+            array_push($files, 'uploads/'.$image->image_name);
+
         }
 
 
@@ -161,10 +162,11 @@ class PostsController extends AppController
         foreach($files as $file){
 
             # download file
-            $download_file = file_get_contents($file);
+            // $download_file = file_get_contents($file);
 
             #add it to the zip
-            $zip->addFromString(basename($file),$download_file);
+            // $zip->addFromString(basename($file),$download_file);
+            $zip->addFile($file, basename($file));
 
         }
 
