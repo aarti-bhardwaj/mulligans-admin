@@ -23,13 +23,13 @@
                             <thead>
                                 <tr>
                                     <th>Images</th>
-                                    <th>Approve Image</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($post->post_images as $image): ?>
                                 <tr>
-                                     <td><img style = "width: 40px; height: auto" src="<?= $image->image_url ?>"></td>
+                                     
+                                     <td><?= $this->Html->link($this->Html->image($image->image_url ,array( 'height'=>'60','width'=> '60')),$image->image_url, array('target'=>'_blank','escape'=>false)); ?></td>
                                     <td>Approve: <?= $this->Form->checkbox('is_approved', ['label' => false, 'checked'=> $image->is_approved ? "checked" : "", 'data-image_id' =>  $image->id , 'data-id' => $post->id, 'name' => 'checked' ]); ?></td>
                                 </tr>
                                 <?php endforeach; ?>
