@@ -113,11 +113,11 @@ class PostsController extends AppController
             $postImage = $this->PostImages->findById($data['id'])->first();
             $postImage = $this->PostImages->patchEntity($postImage, $this->request->getData());
             if ($this->PostImages->save($postImage)) {
-                $this->Flash->success(__('The post image has been saved.'));
+                $this->Flash->success(__('Image has been approved'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The post image could not be saved. Please, try again.'));
+            $this->Flash->error(__('Not able to approve image. Please, try again.'));
         }
         $this->set(compact('post', $post));
     }

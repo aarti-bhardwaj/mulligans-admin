@@ -61,6 +61,7 @@
                   type: 'PUT',
                   url: host+"posts/edit/"+postId,
                   data: { is_approved:isChecked, id:objId }
-        });        
+        });    
+            alert('Status updated!');    
         });
 </script>
