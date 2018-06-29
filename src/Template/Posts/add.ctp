@@ -4,18 +4,20 @@
  * @var \App\Model\Entity\Post $post
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Posts'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Post Images'), ['controller' => 'PostImages', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Post Image'), ['controller' => 'PostImages', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="ibox float-e-margins">
+			<div class="ibox-content">
+				
+
+
+    
 <div class="posts form large-9 medium-8 columns content">
     <?= $this->Form->create($post) ?>
     <fieldset>
+    <div class = 'ibox-title'>
         <legend><?= __('Add Post') ?></legend>
+    </div>
         <?php
             echo $this->Form->control('asking_price');
             echo $this->Form->control('product_description');
@@ -27,4 +29,8 @@
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
+</div>
+			</div>
+		</div>
+	</div>
 </div>

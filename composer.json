@@ -9,6 +9,7 @@
         "cakephp/cakephp": "3.6.*",
         "cakephp/migrations": "^1.8.0",
         "cakephp/plugin-installer": "^1.0",
+        "integrateideas/inspiniaTheme": "dev-InspiniaTheme3.6",
         "josegonzalez/dotenv": "3.*",
         "mobiledetect/mobiledetectlib": "2.*"
     },
@@ -49,5 +50,11 @@
     "prefer-stable": true,
     "config": {
         "sort-packages": true
+    },
+    "repositories": {
+        "integrateideas": {
+            "type": "vcs",
+            "url": "https://github.com/integrateideas/cake3Themes.git"
+        }
     }
 }

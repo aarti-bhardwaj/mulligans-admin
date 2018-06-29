@@ -9,40 +9,41 @@
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
 
-<nav class="large-2 medium-4 columns" id="actions-sidebar">
-   
-</nav> 
-<div class="posts form large-9 medium-8 columns content">
-    <ul class="right">
-      <?= $this->Html->link(__('Download Zip'), ['controller' => 'Posts', 'action' => 'downloadZip', $post->id]) ?>
-    </ul>
-    <?= $this->Form->create($post) ?>
-    <fieldset>
-        <legend><?= __('Post Images') ?></legend>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="ibox float-e-margins">
+			<div class="ibox-content">
+    			<ul class="pull-right">
+                  <?= $this->Html->link(__('Download Zip'), ['controller' => 'Posts', 'action' => 'downloadZip', $post->id], ['class' => 'btn btn-warning']) ?>
+                </ul>
+    
+                    <?= $this->Form->create($post) ?>
+                    <fieldset>
+                       <table class = 'table' cellpadding="0" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Images</th>
+                                    <th>Approve Image</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($post->post_images as $image): ?>
+                                <tr>
+                                     <td><img style = "width: 40px; height: auto" src="<?= $image->image_url ?>"></td>
+                                    <td>Approve: <?= $this->Form->checkbox('is_approved', ['label' => false, 'checked'=> $image->is_approved ? "checked" : "", 'data-image_id' =>  $image->id , 'data-id' => $post->id, 'name' => 'checked' ]); ?></td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                    <?= $this->Form->button(__('Submit'), ['class' => 'pull-right']) ?>
+                    <?= $this->Form->end() ?>
+			</div> <!-- .ibox-content ends --> 
+		</div> <!-- .ibox ends -->
+	</div> <!-- .col-lg-12 ends -->
+</div> <!-- .row ends -->
 
-     <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Images</th>
-                <th>Approve Image</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($post->post_images as $image): ?>
-            <tr>
-                 <td><img style = "width: 40px; height: auto" src="<?= $image->image_url ?>"></td>
-                <td>Approve: <?= $this->Form->checkbox('is_approved', ['label' => false, 'checked'=> $image->is_approved ? "checked" : "", 'data-image_id' =>  $image->id , 'data-id' => $post->id, 'name' => 'checked' ]); ?></td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>  
-     
-    </fieldset>
-</div>
-
-
-
-    <script>
+<script>
         $('input[name=checked]').change(function(e) {
         e.preventDefault();
         console.log('In hitting api');
@@ -62,4 +63,4 @@
                   data: { is_approved:isChecked, id:objId }
         });        
         });
-        </script>
+</script>

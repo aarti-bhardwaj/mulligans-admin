@@ -26,14 +26,19 @@ class PostsController extends AppController
      */
     public function index()
     {
+        $postIds = $this->Posts->find()->extract('id')->toArray();
 
-        $this->paginate = [
-            'contain' => ['PostImages']
-        ];
-        
-        $posts = $this->paginate($this->Posts);
-
+        $posts = $this->Posts->find()->contain(['PostImages'])
+                                     ->matching('PostImages', function($q) use($postIds){
+                                        return $q->where(['PostImages.post_id IN' => $postIds]);
+                                     })
+                                     ->indexBy('id')
+                                     ->toArray();
+        $posts = array_unique($posts);
+        // $posts = $this->paginate($this->Posts);
+        $this->set('posts', $posts);
         $this->set(compact('posts'));
+
     }
 
     /**

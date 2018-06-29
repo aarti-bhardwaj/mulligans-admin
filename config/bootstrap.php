@@ -219,3 +219,9 @@ if (Configure::read('debug')) {
 if(!Configure::read('ImageUpload.uploadImage')) {
    Configure::write('ImageUpload.uploadImage','uploads');
 }
+
+Plugin::load('InspiniaTheme', ['bootstrap' => true,'routes' => true]);
+
+if (file_exists(CONFIG . 'navigation.php')) {
+        Configure::load('navigation');
+    }

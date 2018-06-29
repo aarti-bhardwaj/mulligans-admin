@@ -121,6 +121,7 @@ class UsersController extends AppController
     public function login()
     {
         $this->viewBuilder()->setLayout('login-default');
+        // pr($this->Auth->user()); die;
         if($this->Auth->user()){
             return $this->redirect($this->Auth->redirectUrl(['controller' => 'Posts', 'action' => 'index']));
                
@@ -128,6 +129,10 @@ class UsersController extends AppController
             if ($this->request->is('post')) {
                 $user = $this->Auth->identify();
                 if ($user) {
+                        $this->loadModel('Roles');
+                        $role = $this->Roles->findById($user['role_id'])->first();
+                        $user['role']['name'] = $role['name'];
+                // pr($user); die;
                     
                         $this->Auth->setUser($user);
                         return $this->redirect($this->Auth->redirectUrl(['controller' => 'Posts', 'action' => 'index']));
